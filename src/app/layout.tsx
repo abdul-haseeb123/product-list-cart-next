@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ProductsProvider } from "@/context/ProductContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-redhat">{children}</body>
+      <body className="font-redhat">
+        <ProductsProvider>{children}</ProductsProvider>
+      </body>
     </html>
   );
 }

@@ -10,6 +10,8 @@ interface Product {
   category: string;
   price: number;
   image: Image;
+  inCart: boolean;
+  count: number;
 }
 
 export default Product;

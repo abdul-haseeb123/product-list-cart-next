@@ -9,7 +9,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "empty-cart":
+          "url('/images/illustration-empty-cart.svg'), linear-gradient(to right, #FFF, #FFF)",
+      },
+    },
     fontFamily: {
       redhat: ["Red Hat Display"],
       redhatitalic: ["Red Hat Italic"],
