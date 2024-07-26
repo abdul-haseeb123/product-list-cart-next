@@ -60,7 +60,10 @@ export function Dialog() {
               >
                 <span>
                   <Image
-                    src={product.image.thumbnail.slice(8)}
+                    src={
+                      "/product-list-cart-next" +
+                      product.image.thumbnail.slice(8)
+                    }
                     alt={product.name}
                     width={100}
                     height={96}

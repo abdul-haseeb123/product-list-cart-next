@@ -14,14 +14,14 @@ export function ProductCard({ product }: { product: ProductInterface }) {
         <picture className="rounded-lg">
           <source
             media="(max-width: 500px)"
-            srcSet={product.image.mobile.slice(8)}
+            srcSet={"/product-list-cart-next" + product.image.mobile.slice(8)}
           />
           <source
             media="(max-width: 600px)"
-            srcSet={product.image.tablet.slice(8)}
+            srcSet={"/product-list-cart-next" + product.image.tablet.slice(8)}
           />
           <img
-            src={product.image.desktop.slice(8)}
+            src={"/product-list-cart-next" + product.image.desktop.slice(8)}
             alt={product.name}
             className={cn("rounded-xl", {
               "border-4 border-red": product.count > 0,
