@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "empty-cart":
-          "url('/images/illustration-empty-cart.svg'), linear-gradient(to right, #FFF, #FFF)",
+          "url('/product-list-cart-next/images/illustration-empty-cart.svg'), linear-gradient(to right, #FFF, #FFF)",
       },
     },
     fontFamily: {
