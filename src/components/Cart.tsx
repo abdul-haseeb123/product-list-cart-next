@@ -4,8 +4,10 @@ import { cn } from "@/lib/utils";
 import RemoveFromCart from "../../public/images/icon-remove-item.svg";
 import IconCarbonNeutral from "../../public/images/icon-carbon-neutral.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function Cart() {
+  const router = useRouter();
   const { products, removeProductFromCart } = useProducts();
   const productsInCart = products.filter((product) => product.count > 0);
   const orderTotal = productsInCart.reduce(
@@ -64,7 +66,10 @@ export function Cart() {
               delivery
             </p>
           </div>
-          <button className="bg-red/90 hover:bg-red p-3 flex justify-center mt-5 text-rose-50 rounded-full">
+          <button
+            className="bg-red/90 hover:bg-red p-3 flex justify-center mt-5 text-rose-50 rounded-full"
+            onClick={() => router.push("?showOrder=y")}
+          >
             Confirm Order
           </button>
         </div>

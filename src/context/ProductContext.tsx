@@ -8,10 +8,12 @@ const ProductsContext = createContext<{
   products: Product[];
   incrementDecrementProduct: (productName: string, increment: boolean) => void;
   removeProductFromCart: (productName: string) => void;
+  resetProducts: () => void;
 }>({
   products: [],
   incrementDecrementProduct: () => {},
   removeProductFromCart: () => {},
+  resetProducts: () => {},
 });
 
 const useProducts = () => useContext(ProductsContext);
@@ -34,6 +36,16 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
       } else {
         return { ...product };
       }
+    });
+    setProducts(updatedProducts);
+  };
+
+  const resetProducts = () => {
+    const updatedProducts = products.map((product) => {
+      return {
+        ...product,
+        count: 0,
+      };
     });
     setProducts(updatedProducts);
   };
@@ -70,6 +82,7 @@ const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
         products,
         incrementDecrementProduct,
         removeProductFromCart,
+        resetProducts,
       }}
     >
       {children}
