@@ -33,7 +33,10 @@ export function Cart() {
       ) : (
         <div className="flex flex-col">
           {productsInCart.map((product) => (
-            <div className="w-full flex justify-between py-4 border-b border-b-rose-100">
+            <div
+              className="w-full flex justify-between py-4 border-b border-b-rose-100"
+              key={product.name}
+            >
               <div className="flex flex-col">
                 <span className="font-semibold">{product.name}</span>
                 <div className="flex gap-4">

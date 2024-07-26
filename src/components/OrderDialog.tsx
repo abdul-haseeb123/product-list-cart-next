@@ -7,18 +7,16 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export function Dialog() {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const { products, resetProducts } = useProducts();
+  const dialogRef = useRef<null | HTMLDialogElement>(null);
   const productsInCart = products.filter((product) => product.count > 0);
-  if (productsInCart.length == 0) {
-    return null;
-  }
+
   const totalOrderValue = productsInCart.reduce(
     (acc, product) => acc + product.price * product.count,
     0
   );
-  const searchParams = useSearchParams();
-  const dialogRef = useRef<null | HTMLDialogElement>(null);
   const showDialog = searchParams.get("showOrder");
 
   useEffect(() => {
@@ -28,6 +26,10 @@ export function Dialog() {
       dialogRef.current?.close();
     }
   }, [showDialog]);
+
+  if (productsInCart.length == 0) {
+    return null;
+  }
 
   const closeDialog = () => {
     resetProducts();
@@ -52,7 +54,10 @@ export function Dialog() {
           </div>
           <div className="p-3 bg-rose-50 rounded-xl overflow-y-auto max-h-80">
             {productsInCart.map((product) => (
-              <div className="flex py-2 border-b border-rose-100 gap-4 items-center">
+              <div
+                className="flex py-2 border-b border-rose-100 gap-4 items-center"
+                key={product.name}
+              >
                 <span>
                   <Image
                     src={product.image.thumbnail.slice(8)}

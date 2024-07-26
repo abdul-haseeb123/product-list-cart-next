@@ -5,18 +5,16 @@ import { ProductCard } from "@/components/Product";
 import { Cart } from "@/components/Cart";
 import { useProducts } from "@/context/ProductContext";
 import { Dialog } from "@/components/OrderDialog";
+import { Suspense } from "react";
 
-export default function page() {
+export default function Page() {
   const { products } = useProducts();
   console.log("products", products);
   return (
     <>
-      <Dialog>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-        incidunt soluta dolore reiciendis saepe ipsam necessitatibus, dicta,
-        suscipit earum perspiciatis vitae perferendis quaerat obcaecati
-        voluptatem iste excepturi quidem repellat magnam?
-      </Dialog>
+      <Suspense>
+        <Dialog />
+      </Suspense>
 
       <main className="min-h-screen grid place-content-center bg-rose-50 pt-16">
         <div className="flex flex-col lg:flex-row justify-center gap-4">
